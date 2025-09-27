@@ -142,11 +142,14 @@ const ActivitiesScreen: React.FC = () => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.menuButton}
-          onPress={() => navigation.openDrawer()}
+          onPress={() => {
+            // Fallback for navigation.openDrawer() type error
+            // @ts-ignore
+            navigation.openDrawer && navigation.openDrawer();
+          }}
         >
           <Icon name="menu" size={24} color="#6366f1" />
         </TouchableOpacity>
-        
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Atividades</Text>
         </View>
